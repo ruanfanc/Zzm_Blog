@@ -8,6 +8,10 @@ const requests = axios.create({
     baseURL: "http://152.136.254.142:3000/api",
     timeout: 5000,
 })
+const musicrequest = axios.create({
+    baseURL: "http://152.136.254.142:4000",
+    timeout: 5000,
+})
 // 拦截器
 requests.interceptors.request.use((config) => {
     // 进度条开始
@@ -27,4 +31,17 @@ requests.interceptors.response.use((res) => {
 }, (error) => {
     return Promise.reject(new Error('faile'))
 })
-export default requests
+musicrequest.interceptors.request.use((config) => {
+    // 进度条开始
+    nprogress.start();
+    return config
+});
+musicrequest.interceptors.response.use((res) => {
+    // 进度条结束
+    nprogress.done();
+    return res.data;
+
+}, (error) => {
+    return Promise.reject(new Error('faile'))
+})
+export { requests, musicrequest }

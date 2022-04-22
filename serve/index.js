@@ -7,7 +7,7 @@ const expressjwt = require('express-jwt')
 const app = express()
 app.use(cors())
 app.use(expressjwt({ secret: 'zzmlovesyj' }).unless({
-    path: [/^\/api\/blog/]
+    path: [/^\/api\/blog/, /^\/uploads/]
 }))
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -16,5 +16,4 @@ app.use('/api', userRouter)
 
 app.use('/uploads', express.static(__dirname + '/uploads'))
 app.listen(3000, () => {
-    console.log('Server running at http://127.0.0.1:3000/');
 }) 

@@ -6,37 +6,47 @@
           <h1>{{ blogdetail.title }}</h1>
           <div>
             <i class="el-icon-date">{{ blogdetail.date }}</i>
-            <i class="el-icon-view" style="">{{ blogdetail.views }}</i>
-            <i class="el-icon-magic-stick"> {{ blogdetail.likes }}</i>
+            <i class="el-icon-view" style>{{ blogdetail.views }}</i>
+            <i class="el-icon-magic-stick">{{ blogdetail.likes }}</i>
           </div>
         </div>
         <div class="Blogs-img"></div>
 
-        <div class="Blogs-Body ql-snow">
-          <div class="ql-editor">
-            <div v-html="blogdetail.content"></div>
-          </div>
-        </div>
+        <div v-html="blogdetail.content"></div>
       </div>
     </div>
   </div>
 </template>
-
+ 
 <script>
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
-import "quill/dist/quill.bubble.css";
-import Blogs from "../../Home/ShowBlog/Blogs/index.vue";
+import { reqgetblogdetail } from "@/api";
+import Prism from "/src/assets/Prims/prism"; // 要提醒一下，你下载的JS文件末尾加上一句 export default Prism
 export default {
-  props: ["blogdetail"],
   data() {
-    return {};
+    return {
+      blogdetail: {},
+    };
   },
-  methods: {},
-  watch: {},
+  computed: {},
+  methods: {
+    async getblogdetail() {
+      const blogdetail = await reqgetblogdetail(this.$route.query.id);
+      this.blogdetail = blogdetail.blogdetail[0];
+    },
+  },
+  watch: {
+    blogdetail: {
+      handler(newVal, oldVal) {
+        this.$nextTick(() => {
+          Prism.highlightAll();
+        });
+      },
+    },
+  },
   name: "Blog_Body",
-  components: {
-    Blogs,
+  components: {},
+  mounted() {
+    this.getblogdetail();
   },
 };
 </script>
@@ -97,10 +107,7 @@ export default {
 .Blogs-Body {
   margin-top: 50px;
   line-height: 25px;
-}
-.ql-editor {
-  min-height: 400px;
-  height: auto !important;
+  min-height: 600px;
 }
 </style>
  

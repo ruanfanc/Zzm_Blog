@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { Button, Popover, Image, Container, CarouselItem, Carousel, Icon, Card, Option, Upload, Timeline, TimelineItem, Pagination, Select, Header, Aside, Main, Footer, Input, Menu, MessageBox, Message, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, Table, TableColumn, DropdownItem, Form, FormItem, } from 'element-ui';
+import "tailwindcss/tailwind.css"
+import '@wangeditor/editor/dist/css/style.css'
+import "/src/assets/Prims/prism.css"
+import {
+  Button, Slider, Popover, Image, Container, CarouselItem, Tabs,
+  TabPane, Carousel, Icon, Card, Option, Upload, Timeline, TimelineItem, Pagination, Select, Header, Aside, Main, Footer, Input, Menu, MessageBox, Message, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, Table, TableColumn, DropdownItem, Form, FormItem,
+} from 'element-ui';
 import router from './router'
 import store from './store';
-import './assets/iconfont/footer-label/iconfont.css';
-import './assets/iconfont/NavMenu/iconfont.css';
-import './assets/iconfont/Blogs-detail/iconfont.css';
-import './assets/iconfont/Blogs-label/iconfont.css';
+import './assets/iconfont/iconfont.css';
 import animated from 'animate.css'
 import Navmenu from './components/Navmenu/index';
 import FooterNav from './components/FooterNav/index';
@@ -16,6 +19,9 @@ Vue.config.productionTip = false
 Vue.use(animated)
 Vue.use(Option)
 Vue.use(Pagination)
+Vue.use(Slider)
+Vue.use(Tabs)
+Vue.use(TabPane)
 Vue.use(Carousel)
 Vue.use(CarouselItem)
 Vue.use(Icon)
@@ -46,11 +52,14 @@ Vue.use(DropdownItem)
 Vue.use(Button)
 Vue.component('NavMenu', Navmenu)
 Vue.component('FooterNav', FooterNav)
+
+
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
+const music = new Audio()
 new Vue({
   router,
   store,

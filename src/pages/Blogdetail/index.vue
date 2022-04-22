@@ -2,7 +2,7 @@
   <div>
     <NavMenu />
     <Head />
-    <Body :blogdetail="blogdetail" />
+    <Body/>
   </div>
 </template>
 
@@ -16,12 +16,9 @@ export default {
     Body,
   },
   computed: {
-    blogdetail() {
-      return this.$store.getters.Blogcontent;
-    },
+
   },
   mounted() {
-    this.$store.dispatch("getblogdetail", this.$route.query);
   },
 };
 </script>

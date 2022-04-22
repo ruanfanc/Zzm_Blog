@@ -1,10 +1,10 @@
-import requests from "./requests";
+import { requests } from "./requests";
 
 export const login = data => requests({ url: "/blog/login", data, method: "POST" })
 
 export const createBlog = data => requests({ url: "/user/createBlog", data, method: "POST" })
 
-export const uploadimg = data => requests({ url: "/blog/createBlog/uploadimg", data, method: "POST" })
+export const uploadimg = data => requests({ url: "/blog/uploadimg", data, method: "POST" })
 
 export const reqgetblogsinfo = data => requests({ url: `/blog/getblogsinfo/${data}`, method: "GET" })
 
@@ -23,3 +23,4 @@ export const reqgetsortinfo = (data, index) => requests({ url: `/blog/sort/getso
 export const reqgetdateindexs = data => requests({ url: `/blog/getdateindexs/${data}`, method: "GET" })
 
 export const reqdeleteblog = data => requests({ url: `/blog/deleteBlog`, data, method: "POST" })
+

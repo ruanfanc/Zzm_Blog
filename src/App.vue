@@ -1,11 +1,19 @@
 <template>
   <div>
+    <MusicAudio />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import MusicAudio from "./components/MusicAudio/index";
+
+export default {
+  mounted() {},
+  components: {
+    MusicAudio,
+  },
+};
 </script>
 
 <style>

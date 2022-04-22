@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 module.exports = {
     lintOnSave: false,
@@ -17,6 +16,13 @@ module.exports = {
             appleTouchTcom: './public/favicon.ico',
             maskIcon: './public/favicon.ico',
             msTileImage: './public/favicon.ico'
+        }
+    },
+    css: {
+        loaderOptions: {
+            postcss: {
+                plugins: [require('tailwindcss'), require('autoprefixer')]
+            }
         }
     }
 }

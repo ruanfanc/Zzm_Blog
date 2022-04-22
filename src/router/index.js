@@ -5,6 +5,9 @@ import Home from '@/pages/Home'
 import Blogdetail from '@/pages/Blogdetail'
 import Search from '../pages/Search'
 import Music from '../pages/Music'
+import MusicHome from '../pages/Music/Home'
+import MusicSearch from '../pages/Music/Search'
+import Sheet from '../pages/Music/Sheet'
 import DateIndex from '../pages/DateIndex'
 import About from '../pages/About'
 import Article from '../pages/Article'
@@ -27,7 +30,13 @@ let router = new VueRouter({
         { path: '/Sort/:detail?/:name?', component: Blog_Sort, name: "Sort" },
         { path: '/Home', component: Home, name: 'Home' },
         { path: '/Search', component: Search, name: 'Search' },
-        { path: '/Music', component: Music, name: 'Music' },
+        {
+            path: '/Music', redirect: './Music/Home', component: Music, name: 'Music', children: [
+                { path: 'Home', component: MusicHome, name: 'MusicHome' },
+                { path: 'Search', component: MusicSearch, name: 'MusicSearch' },
+                { path: 'Sheet', component: Sheet, name: 'Sheet' }
+            ]
+        },
         { path: '/Blogdetail/:id?', component: Blogdetail, name: 'Blogdetail' },
         { path: '/LeaveWord', component: LeaveWord, name: 'LeaveWord' },
         { path: '/DateIndex', component: DateIndex, name: 'DateIndex' },

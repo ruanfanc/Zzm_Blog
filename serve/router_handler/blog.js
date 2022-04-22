@@ -3,10 +3,13 @@ const { db } = require(path.join(__dirname, "../mysql/index"))
 
 exports.uploadimg = async (req, res) => {
     let file = req.file
-
-    file.url = `http://127.0.0.1:3000/uploads/${file.filename}`
-    console.log(file);
-    res.send(file)
+    const response = {
+        "errno": 0,
+        "data": {
+            "url": `http://152.136.254.142:3000/api/uploads/${file.filename}`,
+        }
+    }
+    res.send(response)
 }
 exports.createBlog = async (req, res) => {
     let bloginfo = req.body
