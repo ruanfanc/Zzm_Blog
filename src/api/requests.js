@@ -5,7 +5,7 @@ import nprogress from "nprogress";
 import "nprogress/nprogress.css";
 // 二次封装
 const requests = axios.create({
-    baseURL: "http://152.136.254.142:3000/api",
+    baseURL: "http://127.0.0.1:3000/api",
     timeout: 5000,
 })
 const musicrequest = axios.create({
