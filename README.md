@@ -24,6 +24,7 @@
 ![image](https://github.com/ruanfanc/Zzm_Blog/blob/master/screenshot/QQ%E5%9B%BE%E7%89%8720220423113542.png)
 ### 1.1.6.1 后台管理
 ![image](https://github.com/ruanfanc/Zzm_Blog/blob/master/screenshot/QQ%E5%9B%BE%E7%89%8720220423113533.png)
+## 1.2 博客功能简介
 
 ## Project setup
 ```
